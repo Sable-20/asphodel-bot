@@ -1,0 +1,22 @@
+{
+  "name": "asphodel-bot",
+  "version": "0.0.1-0",
+  "description": "Marcoroni's very own Discord Moderation bot.",
+  "main": "asphodel.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salty-sweet/asphodel-bot.git"
+  },
+  "author": "salty-sweet",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/salty-sweet/asphodel-bot/issues"
+  },
+  "homepage": "https://github.com/salty-sweet/asphodel-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
