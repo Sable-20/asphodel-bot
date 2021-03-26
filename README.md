@@ -21,7 +21,6 @@
 
 
 ## Disclaimer
-
 <strong>This project is still quite fresh in creation.</strong> There is absolutely nothing yet in this repository, and for the next couple commits or pushes, it will be just the base code for the Discord bot.
 
 This Readme will most likely be updated as soon as it needs an update, and more sections and documentation will be made as soon as the planned features are ready.
@@ -29,6 +28,4 @@ This Readme will most likely be updated as soon as it needs an update, and more 
 
 
 ## License
-Distributed under the GNU General Public License v3.0. See [`LICENSE`][license] for more information.
-
-[license]: https://github.com/salty-sweet/asphodel-bot/blob/main/LICENSE
+Distributed under the GNU General Public License v3.0. See `LICENSE` for more information.
