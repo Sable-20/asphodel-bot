@@ -1,0 +1,10 @@
+{
+    "prefix": "/",
+    "token": "env$DISC_TOKEN",
+    "isDevelopment": true,
+    "channels": {
+        "data": "some channel id goes here",
+        "logs": "some channel id goes here",
+        "errors": "some channel id goes here"
+    }
+}
