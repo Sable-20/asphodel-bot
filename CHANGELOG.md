@@ -1,7 +1,7 @@
 # <strong>ASPHODEL CHANGELOG</strong>
 
 ## v0.0.1 prerelease 1 
-> <strong><i>`???`</i></strong><br/>
+> <strong><i>`3f7d8cf0b4f959560a6f18e3362bc699580af303`</i></strong><br/>
 > 03/27/2021 
 
 - Added main bot source code.

@@ -48,7 +48,7 @@ The project relies on the [Discord.JS](https://github.com/discordjs/discord.js/)
 
 
 ## Changelog & Roadmap
-A proper changelog can be found at <a href="https://github.com/salty-sweet/asphodel-bot/blob/main/README.md">`CHANGELOG.md`</a>. A project roadmap is also planned and will be added in the future.
+A proper changelog can be found at <a href="https://github.com/salty-sweet/asphodel-bot/blob/main/CHANGELOG.md">`CHANGELOG.md`</a>. A project roadmap is also planned and will be added in the future.
 
 ## License
 Distributed under the GNU General Public License v3.0. See <a href="https://github.com/salty-sweet/asphodel-bot/blob/main/LICENSE">`LICENSE`</a> for more information.
