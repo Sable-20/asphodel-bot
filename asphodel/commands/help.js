@@ -1,17 +1,22 @@
 const Discord = require('discord.js');
+const fs = require('fs');
+let config = require('../../config.json');
+
 
 module.exports = {
     name: 'help',
-    description: 'Some form of help.',
+    description: "Shows you all of Asphodel's commands.",
     execute(client, message, args) {
-        const exampleEmbed = new Discord.MessageEmbed()
-            .setColor('#e42953')
+        const response = new Discord.MessageEmbed()
+            .setColor('#ff0049')
             .setThumbnail()
-            .setTitle('<:TickNo_Night:678620575761039400> Server Startup Error Format')
-            .addFields({ name: 'SODA Discord Bot Commands', value: '\u200B' }, { name: 'Inline field title', value: 'Some value here', inline: true }, { name: 'Inline field title', value: 'Some value here', inline: true }, { name: 'Inline field title', value: 'Some value here', inline: true }, { name: 'Inline field title', value: 'Some value here', inline: true }, { name: 'Inline field title', value: 'Some value here', inline: true }, { name: 'Inline field title', value: 'Some value here', inline: true }, )
-            .addField('\u200B', ' \u25AB Yet another point to point out', true)
+            .setTitle(`${client.user.username} Bot Commands`)
             .setTimestamp();
 
-        message.channel.send(exampleEmbed);
+
+        for (const command of client.commands.values()) {
+            response.addField(`**\`${config.prefix}${command.name}\`**`, command.description)
+        }
+        message.channel.send(response);
     },
 };

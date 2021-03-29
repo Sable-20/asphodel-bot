@@ -1,18 +1,52 @@
+const Discord = require('discord.js');
+
 module.exports = {
     name: 'prune',
-    description: 'Prune up to 99 messages.',
+    description: 'Removes a number of messages in a channel.',
     execute(client, message, args) {
-        const amount = parseInt(args[0]) + 1;
+        const amount = !!parseInt(args[0]) ? parseInt(args[0]) : parseInt(args[1]);
+        const user = message.mentions.users.first();
 
-        if (isNaN(amount)) {
-            return message.reply('that doesn\'t seem to be a valid number.');
-        } else if (amount <= 1 || amount > 100) {
-            return message.reply('you need to input a number between 1 and 99.');
+        function SendResponse(reply) {
+            const response = new Discord.MessageEmbed()
+                .setColor('#ff0049')
+                .setTitle(reply)
+            message.channel.send(response)
+                .then(msg => {
+                    msg.delete({ timeout: 5000 });
+                });
         }
 
-        message.channel.bulkDelete(amount, true).catch(err => {
-            console.error(err);
-            message.channel.send('there was an error trying to prune messages in this channel!');
-        });
+        // pls fix later for fancier reponse returns
+        if (!amount) {
+            if (!user) return SendResponse("💢 The amount of messages to be deleted and must be specified.\nThe message's author is optional.");
+            return SendResponse('💢 Must specify an amount of messages to delete!');
+        }
+        if (amount > 100) return SendResponse('💢 Amount of messages to delete cannot exceed 100.');
+
+        message.delete().then(() => {
+            message.channel.messages.fetch({ limit: 100 })
+                .then(fetched => {
+                    let filtered = fetched.filter(msg => !msg.pinned);
+
+                    if (user) {
+                        const filterBy = user ? user.id : Client.user.id;
+                        filtered = filtered.filter(msg => msg.author.id === filterBy).array().slice(0, amount);
+                    }
+                    filtered = filtered.array().slice(0, amount);
+
+                    message.channel.bulkDelete(filtered, true)
+                        .then(deleted => {
+                            console.log(`Bulk deleted ${deleted.size} messages`);
+                            if (!isNaN(deleted.size) || deleted.size > 0) {
+                                SendResponse(`Deleted ${deleted.size} message${deleted.size !== 1 ? 's' : ''}.`);
+                            } else {
+                                SendResponse("There's nothing for me to delete.");
+                            }
+                        })
+                        .catch(console.error);
+                })
+                .catch(console.error);
+        })
     },
 };

@@ -1,3 +1,4 @@
+const aspho = require('./package.json');
 console.log("|\n|  ASPHODEL (c) 2021\n|\n|  All from salty-sweet's blood, sweat, and nightly tears.\n|  http://github.com/salty-sweet/asphodel-bot\n|");
 
 const fs = require('fs');
@@ -31,7 +32,7 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
-    console.log(`Logged in as ${client.user.tag}.`);
+    console.log(`Logged in as ${client.user.tag}. Now identifying self as ${client.user.username}.`);
 
     client.user.setPresence({
         status: 'online',
