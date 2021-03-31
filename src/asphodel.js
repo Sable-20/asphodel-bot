@@ -31,6 +31,20 @@ for (const file of commandFiles) {
     console.log(`Added command: ${command.name}`);
 }
 
+async function SendResponse() {
+    let response = new Discord.MessageEmbed().setColor('#ff0049');
+    response = new Discord.MessageEmbed()
+        .setTitle(`📕 **${client.user.username} Chat Commands**`)
+        .setDescription(`Here are some of **${client.user.username}**'s chat commands.\nDon't forget to add the **\`${prefix}\`** prefix in these commands!\n\u200B`)
+        .setTimestamp();
+
+}
+
+
+for (const command of client.commands.values()) {
+    response.addField(`**\`${prefix}${command.name}\`**`, command.description)
+}
+
 client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}. Now identifying self as ${client.user.username}.`);
 
@@ -45,6 +59,10 @@ client.once('ready', () => {
     console.log(`Asphodel is up and ready for work.`);
 });
 
+client.on('unhandledRejection', error => {
+    console.error('Unhandled promise rejection: ', error);
+});
+
 client.on('message', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -54,7 +72,8 @@ client.on('message', message => {
     if (!client.commands.has(command)) return;
 
     try {
-        client.commands.get(command).execute(client, message, args);
+        const results = client.commands.get(command).execute(client, message, args);
+
     } catch (error) {
         console.error(error);
         message.reply('an unhandled error occured. I should make a report about it.');

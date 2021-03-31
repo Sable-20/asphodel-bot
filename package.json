@@ -2,9 +2,10 @@
     "name": "asphodel-bot",
     "version": "0.0.2",
     "description": "Marcoroni's very own Discord Moderation bot.",
-    "main": "asphodel.js",
+    "main": "src/asphodel.js",
     "scripts": {
-        "test": "node --trace-warnings ."
+        "start": "node .",
+        "debug": "node --trace-warnings ."
     },
     "repository": {
         "type": "git",
